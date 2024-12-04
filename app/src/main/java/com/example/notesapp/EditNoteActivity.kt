@@ -11,7 +11,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 
-class CreateNoteActivity : AppCompatActivity() {
+class EditNoteActivity : AppCompatActivity() {
     private lateinit var btnBack: ImageButton
     private lateinit var btnSave: Button
     private lateinit var etTextTitle: EditText
@@ -21,21 +21,20 @@ class CreateNoteActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_create_note)
+        setContentView(R.layout.activity_edit_note)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        btnBack = findViewById(R.id.btnBack)
-        btnSave = findViewById(R.id.btnSave)
-        etTextTitle = findViewById(R.id.etTextTitle)
-        etTextDescription = findViewById(R.id.etTextDescription)
+        btnBack = findViewById(R.id.btnBackEdit)
+        btnSave = findViewById(R.id.btnSaveEdit)
+        etTextTitle = findViewById(R.id.etTextTitleEdit)
+        etTextDescription = findViewById(R.id.etTextDescriptionEdit)
 
         val dao = NoteDatabase.getDatabase(this).noteDao()
         val repository = NotesRepository(dao)
         mainViewModel = ViewModelProvider(this, MainViewModelFactory(repository))[MainViewModel::class.java]
-
 
         btnBack.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
@@ -43,6 +42,13 @@ class CreateNoteActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
+        val etId = intent.getIntExtra("id", 0)
+        val etTitle = intent.getStringExtra("title")
+        val etDescription = intent.getStringExtra("description")
+
+        etTextTitle.setText(etTitle)
+        etTextDescription.setText(etDescription)
 
         btnSave.setOnClickListener {
             val title = etTextTitle.text.toString()
@@ -56,8 +62,8 @@ class CreateNoteActivity : AppCompatActivity() {
             if (description.isEmpty()) etTextDescription.error = "Description is required"
 
             if (title.isNotEmpty() && description.isNotEmpty()) {
-                val note = Note(0, title, description)
-                mainViewModel.insertNote(note)
+                val note = Note(etId, title, description)
+                mainViewModel.updateNote(note)
             }
 
             val intent = Intent(this, MainActivity::class.java)
@@ -65,5 +71,6 @@ class CreateNoteActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
     }
 }

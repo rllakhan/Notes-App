@@ -17,4 +17,12 @@ class MainViewModel(private val notesRepository: NotesRepository): ViewModel() {
             }
         }
     }
+
+    fun updateNote(note: Note) {
+        runBlocking {
+            launch {
+                notesRepository.updateNote(note)
+            }
+        }
+    }
 }

@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
 
 @Dao
 interface NotesDao {
@@ -13,4 +14,6 @@ interface NotesDao {
     @Query("SELECT * FROM notes")
     fun getAllNotes() : LiveData<List<Note>>
 
+    @Update
+    suspend fun updateNote(note: Note)
 }

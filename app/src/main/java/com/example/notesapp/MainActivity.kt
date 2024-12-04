@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         tvNoNotes = findViewById(R.id.tvNoNotes)
 
         tvNoNotes.visibility = View.GONE
-        
+
         recyclerView.layoutManager = LinearLayoutManager(this)
         adapter = NoteAdapter(this)
         recyclerView.adapter = adapter

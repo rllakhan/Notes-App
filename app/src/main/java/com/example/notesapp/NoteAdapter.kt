@@ -1,6 +1,7 @@
 package com.example.notesapp
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,6 +26,14 @@ class NoteAdapter(private val context: Context): RecyclerView.Adapter<NoteAdapte
         holder.tvTitle.text = note.title
         holder.tvDescription.text = note.description
 
+        holder.btnEdit.setOnClickListener {
+            val intent = Intent(context, EditNoteActivity::class.java)
+            intent.putExtra("id", note.id)
+            intent.putExtra("title", note.title)
+            intent.putExtra("description", note.description)
+            context.startActivity(intent)
+        }
+
     }
 
     inner class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
@@ -35,6 +44,6 @@ class NoteAdapter(private val context: Context): RecyclerView.Adapter<NoteAdapte
 
     fun setNote(noteList: List<Note>) {
         list = noteList
-        notifyItemInserted(list.size)
+        notifyDataSetChanged()
     }
 }

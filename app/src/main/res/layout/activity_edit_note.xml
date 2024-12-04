@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CreateNoteActivity">
+
+    <ImageButton
+        android:id="@+id/btnBackEdit"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@null"
+        android:contentDescription="@string/arrow_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_arrow_back"
+        app:tint="?attr/colorPrimary" />
+
+    <Button
+        android:id="@+id/btnSaveEdit"
+        style="@style/Widget.Material3.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/save"
+        android:textSize="16sp"
+        android:textColor="@color/blueDark"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etTextTitleEdit"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:autofillHints="text"
+        android:ems="10"
+        android:hint="@string/title"
+        android:inputType="text"
+        android:background="@android:color/transparent"
+        android:textSize="35sp"
+        android:textColor="?attr/colorPrimary"
+        android:fontFamily="sans-serif-black"
+        android:layout_marginTop="60dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etTextDescriptionEdit"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:autofillHints="text"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        android:hint="@string/description"
+        android:textSize="22sp"
+        android:textColor="?attr/colorPrimary"
+        android:fontFamily="sans-serif-medium"
+        android:padding="15dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etTextTitleEdit" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
