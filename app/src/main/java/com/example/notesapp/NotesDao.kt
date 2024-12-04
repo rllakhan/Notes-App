@@ -11,5 +11,6 @@ interface NotesDao {
     suspend fun insertNote(note: Note)
 
     @Query("SELECT * FROM notes")
-    fun getAllNotes() : LiveData<ArrayList<Note>>
+    fun getAllNotes() : LiveData<List<Note>>
+
 }

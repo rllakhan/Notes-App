@@ -2,14 +2,11 @@ package com.example.notesapp
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 class MainViewModel(private val notesRepository: NotesRepository): ViewModel() {
-    fun getAllNotes(): LiveData<ArrayList<Note>> {
+    fun getAllNotes(): LiveData<List<Note>> {
         return notesRepository.getAllNotes()
     }
 

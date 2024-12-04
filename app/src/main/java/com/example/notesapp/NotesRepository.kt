@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 
 class NotesRepository(private val notesDao: NotesDao) {
 
-    fun getAllNotes() : LiveData<ArrayList<Note>> {
+    fun getAllNotes() : LiveData<List<Note>> {
         return notesDao.getAllNotes()
     }
 
