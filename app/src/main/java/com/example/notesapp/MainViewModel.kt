@@ -25,4 +25,12 @@ class MainViewModel(private val notesRepository: NotesRepository): ViewModel() {
             }
         }
     }
+
+    fun deleteNote(note: Note) {
+        runBlocking {
+            launch {
+                notesRepository.deleteNote(note)
+            }
+        }
+    }
 }

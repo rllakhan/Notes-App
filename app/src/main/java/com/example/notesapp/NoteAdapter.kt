@@ -46,4 +46,8 @@ class NoteAdapter(private val context: Context): RecyclerView.Adapter<NoteAdapte
         list = noteList
         notifyDataSetChanged()
     }
+
+    fun getNoteAt(position: Int): Note {
+        return list[position]
+    }
 }
