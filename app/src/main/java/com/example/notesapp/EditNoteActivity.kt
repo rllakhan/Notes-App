@@ -64,12 +64,12 @@ class EditNoteActivity : AppCompatActivity() {
             if (title.isNotEmpty() && description.isNotEmpty()) {
                 val note = Note(etId, title, description)
                 mainViewModel.updateNote(note)
-            }
 
-            val intent = Intent(this, MainActivity::class.java)
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            startActivity(intent)
-            finish()
+                val intent = Intent(this, MainActivity::class.java)
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                startActivity(intent)
+                finish()
+            }
         }
 
     }

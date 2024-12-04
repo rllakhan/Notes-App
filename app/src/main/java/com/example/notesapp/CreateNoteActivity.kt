@@ -58,12 +58,12 @@ class CreateNoteActivity : AppCompatActivity() {
             if (title.isNotEmpty() && description.isNotEmpty()) {
                 val note = Note(0, title, description)
                 mainViewModel.insertNote(note)
-            }
 
-            val intent = Intent(this, MainActivity::class.java)
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            startActivity(intent)
-            finish()
+                val intent = Intent(this, MainActivity::class.java)
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                startActivity(intent)
+                finish()
+            }
         }
     }
 }
