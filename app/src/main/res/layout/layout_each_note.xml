@@ -34,7 +34,8 @@
             android:layout_height="48dp"
             android:contentDescription="@string/edit"
             android:background="@null"
-            app:srcCompat="@drawable/ic_edit" />
+            app:srcCompat="@drawable/ic_edit"
+            app:tint="?attr/colorPrimary" />
     </LinearLayout>
 
     <TextView
