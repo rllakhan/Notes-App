@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         mainViewModel = ViewModelProvider(this, MainViewModelFactory(repository))[MainViewModel::class.java]
 
         mainViewModel.getAllNotes().observe(this) {
-            if (it == null) {
+            if (it.isEmpty()) {
                 tvNoNotes.visibility = View.VISIBLE
             }
             adapter.setNote(it)
@@ -57,6 +57,17 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, CreateNoteActivity::class.java)
             startActivity(intent)
         }
+
+        adapter.setOnClickItemListener(object : NoteAdapter.OnItemClickListener{
+            override fun onItemClick(note: Note) {
+                val intent = Intent(this@MainActivity, NoteActivity::class.java)
+                intent.putExtra("title", note.title)
+                intent.putExtra("description", note.description)
+                startActivity(intent)
+                finish()
+            }
+
+        })
 
         ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT){
             override fun onMove(
